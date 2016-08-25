@@ -1,0 +1,43 @@
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>What are your 3 wishes?</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Open+Sans" rel="stylesheet">
+    </head>
+    <body>
+         <div class = "page-header">
+            {% block page-header %}
+              <h1><a href="">page subject here</a></h1>
+                 <h3>page subsubject here</h3>
+                    <h5><a href="">page description here</a></h5>
+             {% endblock page-header %}
+        </div>
+
+         <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block content %}
+                    <div class="post">
+                        {% block post %}
+                            {% for post in posts %}
+                                <div>
+                                    <p>Published: {{ post.published_date }}</p>
+                                    <h2><a href="">{{ post.title }}</a></h2>
+                                    <p>{{ post.text|linebreaks}}</p>
+                                </div>
+                            {% endfor %}
+                        {% endblock post %}
+                        </div>
+                    {% endblock content %}
+               </div>
+
+            </div>
+        </div>
+
+    </body>
+
+</html>
