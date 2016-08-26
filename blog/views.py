@@ -15,14 +15,14 @@ def post_detail(request, pk):
 
 def post_new(request):
     if request.method == "POST":
-        form=PostForm(request.POST)
+        form = PostForm(request.POST)
 
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('blog.views.post_detail', pk=post.pk)
+            return redirect('post_detail', pk=post.pk)
     else:
         form=PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
@@ -36,7 +36,7 @@ def post_edit(request, pk):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('blog.views.post_detail', pk=post.pk)
+            return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form})
