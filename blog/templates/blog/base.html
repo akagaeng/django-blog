@@ -12,9 +12,9 @@
          <div class = "page-header">
              <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
              {% block page-header %}
-                  <h1><a href="">What are your 3 wishes?</a></h1>
+                  <h1><a href="{% url 'post_list' %}">What are your 3 wishes?</a></h1>
                      <h3>What Would You Wish For if You Had a Genie in a Bottle?</h3>
-                        <h5><a href="">akagaeng's blog implemented by Django framework</a></h5>
+                        <h5><em>akagaeng's blog implemented by Django framework</em></h5>
               {% endblock page-header %}
 
          </div>
@@ -29,7 +29,7 @@
                                 <div>
                                     <p>Published: {{ post.published_date }}</p>
                                     <h2><a href="">{{ post.title }}</a></h2>
-                                    <p>{{ post.text|linebreaks}}</p>
+                                    <p>{{ post.text|linebreaks }}</p>
                                 </div>
                             {% endfor %}
                         {% endblock post %}
