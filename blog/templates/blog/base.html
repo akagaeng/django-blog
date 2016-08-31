@@ -10,7 +10,13 @@
     </head>
     <body>
          <div class = "page-header">
-             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+             {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                <p class="top-menu">Hello {{ user.username }}<small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+             {% else %}
+                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+             {% endif %}
+
              {% block page-header %}
                   <h1><a href="{% url 'post_list' %}">What are your 3 wishes?</a></h1>
                      <h3>What Would You Wish For if You Had a Genie in a Bottle?</h3>
